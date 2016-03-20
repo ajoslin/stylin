@@ -28,6 +28,7 @@
     "extract-css": "^1.0.3",
     "insert-css": "^0.2.0",
     "proxyquire": "^1.7.4",
+    "standard": "^6.0.8",
     "tape": "^4.0.0"
   },
   "dependencies": {

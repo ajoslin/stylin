@@ -30,6 +30,30 @@ This will create [insert-css](https://github.com/substack/insert-css) statements
 browserify entry.js -t stylin -p [ css-extract -o bundle.css ]
 ```
 
+##### Set sass and postcss options in package.json
+
+```json
+{
+  "browserify": [
+    "transform": {
+      [
+        "stylin",
+        {
+          "sass": {
+            "includePaths": ["src/my-variables"]
+          },
+          "postcss": {
+            "autoprefixer": {
+              "browsers": ["last 2 versions"]
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
 ### API
 
 The default options are listed below. They may be overridden.
