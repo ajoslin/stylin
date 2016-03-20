@@ -34,7 +34,7 @@ browserify entry.js -t stylin -p [ css-extract -o bundle.css ]
 
 ```json
 {
-  "browserify": [
+  "browserify": {
     "transform": {
       [
         "stylin",
