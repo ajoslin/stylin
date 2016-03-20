@@ -1,0 +1,41 @@
+{
+  "name": "stylin",
+  "version": "0.0.0",
+  "description": "Browserify transform that compiles sass, runs it through postcss, and injects it into browser with insert-css.",
+  "repository": "ajoslin/stylin",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "standard && tape test.js"
+  },
+  "keywords": [
+    "browserify",
+    "sass",
+    "scss",
+    "browserify transform",
+    "transform",
+    "autoprefixer",
+    "postcss"
+  ],
+  "author": "Andrew Joslin <andrewtjoslin@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^6.1.1",
+    "bl": "^1.1.2",
+    "browserify": "^11.0.1",
+    "css-extract": "^1.0.0",
+    "extract-css": "^1.0.3",
+    "insert-css": "^0.2.0",
+    "proxyquire": "^1.7.4",
+    "tape": "^4.0.0"
+  },
+  "dependencies": {
+    "deep-extend": "^0.4.1",
+    "node-sass": "^3.3.3",
+    "postcss": "~5.0.12",
+    "readable-stream": "^2.0.6",
+    "resolve": "^1.1.6",
+    "xtend": "^4.0.1"
+  }
+}
