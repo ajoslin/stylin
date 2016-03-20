@@ -21,7 +21,6 @@ var defaults = {
 }
 
 module.exports = function stylin (file, options) {
-  console.log('running')
   var ext = path.extname(file)
   if (!/\.(css|sass|scss)/.test(ext)) return new PassThrough()
 
