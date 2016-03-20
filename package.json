@@ -37,6 +37,7 @@
     "postcss": "~5.0.12",
     "readable-stream": "^2.0.6",
     "resolve": "^1.1.6",
+    "through2": "^2.0.1",
     "xtend": "^4.0.1"
   }
 }
