@@ -74,6 +74,7 @@ Options to be passed to the sass compiler. Default value:
   sourceMapContents: false,
   outputStyle: 'compressed'
 }
+```
 
 ###### `options.postcss`
 
