@@ -53,7 +53,13 @@ module.exports = function stylin (file, options) {
 
     sassOptions.includePaths.unshift(path.dirname(file))
 
-    var result = sass.renderSync(sassOptions).css.toString()
+    var result
+    try {
+      result = sass.renderSync(sassOptions).css.toString()
+    } catch (error) {
+      return done(new SyntaxError(error.file + ': ' + error.message + ' (' + error.line + ':' + error.column + ')'))
+    }
+
     var css = options.postcss
       ? postcss(postcssTransforms).process(result).css
       : result
