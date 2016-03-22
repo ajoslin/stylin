@@ -1,6 +1,6 @@
 {
   "name": "stylin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Browserify transform that compiles sass, runs it through postcss, and injects it into browser with insert-css.",
   "repository": "ajoslin/stylin",
   "files": [
