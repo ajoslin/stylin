@@ -58,7 +58,7 @@ module.exports = function stylin (file, options) {
       ? postcss(postcssTransforms).process(result).css
       : result
 
-    this.push('require(\'insert-css\')(' + JSON.stringify(css) + ');')
+    this.push('require(\'insert-css\')(' + JSON.stringify(css) + ', {id: "' + file + '"});')
     done()
   }
 }
