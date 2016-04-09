@@ -1,4 +1,5 @@
 var Prefixer = require('inline-style-prefixer')
+var paramCase = require('param-case')
 
 var prefixer = new Prefixer({keepUnprefixed: true})
 
@@ -12,7 +13,7 @@ module.exports = function formatStyles (selector, style) {
       result[selector + key] = style[key]
     } else {
       // Copy normal styles into the normal selector
-      result[selector][key] = style[key]
+      result[selector][paramCase(key)] = style[key]
     }
   })
 

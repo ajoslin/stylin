@@ -32,6 +32,18 @@ test('formatStyles', function (t) {
     t.end()
   })
 
+  t.test('converts camelCase to dashCase', function (t) {
+    var formatted = formatStyles('.sel', {
+      camelKey: {foo: 'bar'}
+    })
+    t.deepEqual(formatted, {
+      '.sel': {
+        'camel-key': {foo: 'bar'}
+      }
+    })
+    t.end()
+  })
+
   t.test('prefixes', function (t) {
     var formatted = formatStyles('sel', {
       transition: '1s'

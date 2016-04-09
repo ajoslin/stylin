@@ -25,6 +25,7 @@
     "inline-style-prefixer": "^1.0.3",
     "insert-styles": "^1.1.0",
     "murmurhash": "0.0.2",
+    "param-case": "^1.1.2",
     "to-css": "^1.2.1"
   }
 }
