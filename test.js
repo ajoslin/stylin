@@ -14,14 +14,20 @@ test('formatStyles', function (t) {
   t.test('puts pseudo selectors into separate selector', function (t) {
     var formatted = formatStyles('.sel', {
       ':pseudo': {
-        foo: 'bar'
+        userSelect: 'bar'
       },
       'not-pseudo': {
         bar: 'baz'
       }
     })
     t.deepEqual(formatted, {
-      '.sel:pseudo': {foo: 'bar'},
+      '.sel:pseudo': {
+        '-moz-user-select': 'bar',
+        '-ms-user-select': 'bar',
+        '-o-user-select': 'bar',
+        '-webkit-user-select': 'bar',
+        'user-select': 'bar'
+      },
       '.sel': {
         // This won't actually compile to proper css
         'not-pseudo': {
@@ -50,7 +56,10 @@ test('formatStyles', function (t) {
     })
     t.deepEqual(formatted, {
       sel: {
-        WebkitTransition: '1s',
+        '-moz-transition': '1s',
+        '-ms-transition': '1s',
+        '-o-transition': '1s',
+        '-webkit-transition': '1s',
         transition: '1s'
       }
     })

@@ -1,21 +1,26 @@
-var Prefixer = require('inline-style-prefixer')
-var dashCase = require('camel-2-dash')
-
-var prefixer = new Prefixer({keepUnprefixed: true})
+var prefix = require('prefix-lite').default
+var cssKey = require('css-key')
 
 module.exports = function formatStyles (selector, style) {
-  var result = {}
-  result[selector] = {}
+  var sheet = {}
+  sheet[selector] = transform(style)
 
-  Object.keys(style).forEach(function (key) {
-    if (key.charAt(0) === ':') {
-      // Copy pseudo styles into a new selector
-      result[selector + key] = style[key]
-    } else {
-      // Copy normal styles into the normal selector
-      result[selector][dashCase(key)] = style[key]
+  return sheet
+
+  function transform (style) {
+    // By default, add styles to the root of the sheet
+    style = prefix(style)
+
+    return Object.keys(style).reduce(reduce, {})
+
+    function reduce (acc, key) {
+      if (String(key).charAt(0) === ':') {
+        sheet[selector + key] = transform(style[key])
+      } else {
+        acc[cssKey(key)] = style[key]
+      }
+
+      return acc
     }
-  })
-
-  return prefixer.prefix(result)
+  }
 }
