@@ -3,7 +3,6 @@
 Convert a style object into css and insert it into the DOM at runtime.
 
 - Works in Node or the browser
-- Recommended for use with virtual-dom
 - Will never generate the same styles twice
 - Supports pseudo-selectors, but *not* fonts or media queries
 - Autoprefixes styles
