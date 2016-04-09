@@ -6,6 +6,7 @@ Convert a style object into css and insert it into the DOM at runtime.
 - Recommended for use with virtual-dom
 - Will never generate the same styles twice
 - Supports pseudo-selectors, but *not* fonts or media queries
+- Autoprefixes styles
 - Allows you to generate styles at runtime
   - Most tools only generate CSS at compile or app-bootstrap time.
 
