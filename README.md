@@ -42,7 +42,7 @@ render('blue') // generates new stylesheet and className
 
 Returns a string className for the given style.
 
-Any pseudo class (begins with `:`) keys of `style` can be sub-objects containing pseudo-styles for the element (see the above example).
+Any pseudo selector (begins with `:`) keys of `style` can be sub-objects containing pseudo-styles for the element (see the above example).
 
 ## License
 
