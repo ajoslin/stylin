@@ -17,7 +17,6 @@ npm install --save stylin
 
 ```js
 var css = require('stylin')
-var Observ = require('observ')
 var h = require('virtual-dom/h')
 
 function render (color) {
