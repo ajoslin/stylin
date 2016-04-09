@@ -11,10 +11,10 @@ function Stylin (style) {
   var hash = hashJson(style)
   if (cache[hash]) return cache[hash]
 
-  var selector = '._' + hash
-  var css = toCss(formatStyles(selector, style))
+  var className = '_' + hash
+  var css = toCss(formatStyles('.' + className, style))
 
   insertStyles(css)
-  cache[hash] = selector
-  return selector
+  cache[hash] = className
+  return className
 }

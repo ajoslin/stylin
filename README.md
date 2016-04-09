@@ -44,6 +44,8 @@ Returns a string className for the given style.
 
 Any pseudo selector (begins with `:`) keys of `style` can be sub-objects containing pseudo-styles for the element (see the above example).
 
+Converts camelCase keys in the object to dash-case.
+
 ## License
 
 MIT © [Andrew Joslin](http://ajoslin.com)
