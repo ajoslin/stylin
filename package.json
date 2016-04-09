@@ -1,0 +1,30 @@
+{
+  "name": "stylin",
+  "version": "1.0.0",
+  "description": "CSS to JS",
+  "repository": "ajoslin/stylin",
+  "files": [
+    "index.js",
+    "src"
+  ],
+  "scripts": {
+    "test": "standard && tape test.js"
+  },
+  "keywords": [
+    "css",
+    "javascript",
+    "style"
+  ],
+  "author": "Andrew Joslin <andrewtjoslin@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "standard": "^6.0.8",
+    "tape": "^4.0.0"
+  },
+  "dependencies": {
+    "inline-style-prefixer": "^1.0.3",
+    "insert-styles": "^1.1.0",
+    "murmurhash": "0.0.2",
+    "to-css": "^1.2.1"
+  }
+}
