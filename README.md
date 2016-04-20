@@ -2,12 +2,9 @@
 
 Convert a style object into css and insert it into the DOM at runtime.
 
-- Works in Node or the browser
-- Will never generate the same styles twice
-- Supports pseudo-selectors, but *not* fonts or media queries
-- Autoprefixes styles
-- Allows you to generate styles at runtime
-  - Most tools only generate CSS at compile or app-bootstrap time.
+This library is a convenience wrapper around [free-style](https://github.com/blakeembrey/free-style) that provides auto-prefixing and an easier API.
+
+Total size is 6.33kB gzipped.
 
 ```
 npm install --save stylin
@@ -22,7 +19,7 @@ var h = require('virtual-dom/h')
 function render (color) {
   var style = {
     color: color,
-    ':hover': {
+    '&:hover': {
       backgroundColor: color
     }
   }
@@ -38,14 +35,44 @@ render('blue') // generates new stylesheet and className
 
 #### `stylin(style) -> className`
 
-**style**: object (required)
-
 Returns a string className for the given style.
 
-Any pseudo selector (begins with `:`) keys of `style` can be sub-objects containing pseudo-styles for the element (see the above example).
+Passes a prefixed style object to [FreeStyle#registerStyle](https://github.com/blakeembrey/free-style#styles).
 
-Converts camelCase keys in the object to dash-case.
+#### `stylin.rule(key, style) -> className`
+
+Returns a string className for the given rule. Use it for font-faces at the like.
+
+Passes a prefixed rule object to [FreeStyle#registerRule](https://github.com/blakeembrey/free-style#rules).
+
+Example:
+
+```js
+var css = require('stylin')
+var className = css.rule('@font-face', {
+  fontFamily: '"Bitstream Vera Serif Bold"',
+  src: 'url(https://mdn.mozillademos.org/files/2468/VeraSeBd.ttf)'
+})
+```
+
+#### `stylin.keyframes(style) -> className`
+
+Returns a string className for the given keyframe definition.
+
+Passes a prefixed keyframe object to [FreeStyle#registerKeyframes](https://github.com/blakeembrey/free-style#keyframes).
+
+Example:
+
+```js
+var css = require('stylin')
+var className = css.keyframes({
+  from: {opacity: 0},
+  to: {opacity: 1}
+})
+```
 
 ## License
 
 MIT © [Andrew Joslin](http://ajoslin.com)
+
+MIT © [Blake Embrey](http://blakeembrey.me), [free-style](https://github.com/blakeembrey/free-style)

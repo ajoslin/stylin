@@ -1,20 +1,19 @@
-var toCss = require('to-css')
-var insertStyles = require('insert-styles')
-var hashJson = require('./hash')
-var formatStyles = require('./format')
+var prefix = require('inline-style-prefix-all')
+var getStyle = require('./free-style')
 
-var cache = {}
+module.exports = css
 
-module.exports = Stylin
+css.rule = rule
+css.keyframes = keyframes
 
-function Stylin (style) {
-  var hash = hashJson(style)
-  if (cache[hash]) return cache[hash]
+function css (rules) {
+  return getStyle().registerStyle(prefix(rules))
+}
 
-  var className = '_' + hash
-  var css = toCss(formatStyles('.' + className, style))
+function rule (key, rules) {
+  return getStyle().registerRule(key, prefix(rules))
+}
 
-  insertStyles(css)
-  cache[hash] = className
-  return className
+function keyframes (rules) {
+  return getStyle().registerKeyframes(prefix(rules))
 }
