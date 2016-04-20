@@ -39,9 +39,9 @@ Returns a string className for the given style.
 
 Passes a prefixed style object to [FreeStyle#registerStyle](https://github.com/blakeembrey/free-style#styles).
 
-#### `stylin.rule(key, style) -> className`
+#### `stylin.rule(key, style) -> undefined`
 
-Returns a string className for the given rule. Use it for font-faces at the like.
+Creates a global rule. Use it for font-faces at the like.
 
 Passes a prefixed rule object to [FreeStyle#registerRule](https://github.com/blakeembrey/free-style#rules).
 
@@ -49,7 +49,7 @@ Example:
 
 ```js
 var css = require('stylin')
-var className = css.rule('@font-face', {
+css.rule('@font-face', {
   fontFamily: '"Bitstream Vera Serif Bold"',
   src: 'url(https://mdn.mozillademos.org/files/2468/VeraSeBd.ttf)'
 })
