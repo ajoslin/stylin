@@ -41,7 +41,7 @@ Passes a prefixed style object to [FreeStyle#registerStyle](https://github.com/b
 
 #### `stylin.rule(key, style) -> undefined`
 
-Creates a global rule. Use it for font-faces at the like.
+Creates a global rule. Use it for font-faces and the like.
 
 Passes a prefixed rule object to [FreeStyle#registerRule](https://github.com/blakeembrey/free-style#rules).
 
