@@ -55,9 +55,9 @@ css.rule('@font-face', {
 })
 ```
 
-#### `stylin.keyframes(style) -> className`
+#### `stylin.keyframes(style) -> animationName`
 
-Returns a string className for the given keyframe definition.
+Returns a string animationName for the given keyframe definition.
 
 Passes a prefixed keyframe object to [FreeStyle#registerKeyframes](https://github.com/blakeembrey/free-style#keyframes).
 
@@ -65,7 +65,7 @@ Example:
 
 ```js
 var css = require('stylin')
-var className = css.keyframes({
+var animationName = css.keyframes({
   from: {opacity: 0},
   to: {opacity: 1}
 })
