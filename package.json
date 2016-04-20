@@ -25,7 +25,6 @@
     "free-style": "^1.1.0",
     "inline-style-prefix-all": "^1.0.5",
     "insert-styles": "^1.1.0",
-    "next-tick-debounce": "^2.0.0",
     "once": "^1.3.3"
   }
 }
