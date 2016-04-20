@@ -1,6 +1,6 @@
 # stylin [![Build Status](https://travis-ci.org/ajoslin/stylin.svg?branch=master)](https://travis-ci.org/ajoslin/stylin)
 
-Convert a style object into css and insert it into the DOM at runtime.
+Javascript to CSS: Convert a style object into css and insert it into the DOM at runtime.
 
 This library is a convenience wrapper around [free-style](https://github.com/blakeembrey/free-style) that provides auto-prefixing and an easier API.
 
