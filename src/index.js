@@ -1,19 +1,24 @@
 var prefix = require('inline-style-prefix-all')
-var getStyle = require('./free-style')
+var freeStyle = require('./free-style')
 
 module.exports = css
 
 css.rule = rule
 css.keyframes = keyframes
+css.getCss = getCss
 
 function css (rules) {
-  return getStyle().registerStyle(prefix(rules))
+  return freeStyle().registerStyle(prefix(rules))
 }
 
 function rule (key, rules) {
-  return getStyle().registerRule(key, prefix(rules))
+  return freeStyle().registerRule(key, prefix(rules))
 }
 
 function keyframes (rules) {
-  return getStyle().registerKeyframes(prefix(rules))
+  return freeStyle().registerKeyframes(prefix(rules))
+}
+
+function getCss () {
+  return freeStyle().getStyles()
 }
