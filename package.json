@@ -8,7 +8,7 @@
     "src"
   ],
   "scripts": {
-    "test": "standard"
+    "test": "standard && tape test.js"
   },
   "keywords": [
     "css",
@@ -19,7 +19,7 @@
   "license": "MIT",
   "devDependencies": {
     "standard": "^6.0.8",
-    "tape": "^4.0.0"
+    "tape": "^4.5.1"
   },
   "dependencies": {
     "free-style": "^1.1.0",

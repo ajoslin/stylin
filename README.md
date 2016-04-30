@@ -71,6 +71,10 @@ var animationName = css.keyframes({
 })
 ```
 
+#### `stylin.getCss() -> cssString`
+
+Returns a string of all styles generated. Intended for use in server-side rendering.
+
 ## License
 
 MIT © [Andrew Joslin](http://ajoslin.com)
