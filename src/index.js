@@ -36,7 +36,7 @@ function important (style) {
   for (var key in style) {
     if (style[key] instanceof Object) {
       style[key] = important(style[key])
-    } else if (String(style[key]).indexOf(important) === -1) {
+    } else if (String(style[key]).indexOf('!important') === -1) {
       style[key] += ' !important'
     }
   }
