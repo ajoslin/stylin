@@ -1,4 +1,4 @@
-var prefix = require('inline-style-prefix-all')
+var prefixAll = require('inline-style-prefix-all')
 var freeStyle = require('./free-style')
 
 module.exports = css
@@ -23,6 +23,24 @@ function keyframes (style) {
   if (!style) throw new TypeError('css style object expected')
 
   return freeStyle().registerKeyframes(prefix(style))
+}
+
+function prefix (style) {
+  prefixAll(style)
+  important(style)
+
+  return style
+}
+
+function important (style) {
+  for (var key in style) {
+    if (style[key] instanceof Object) {
+      style[key] = important(style[key])
+    } else {
+      style[key] += ' !important'
+    }
+  }
+  return style
 }
 
 function getCss () {

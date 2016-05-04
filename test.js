@@ -2,10 +2,13 @@ var test = require('tape')
 var stylin = require('./')
 
 test(function (t) {
-  var className = stylin({color: 'red'})
-  t.equal(typeof className, 'string')
-
-  t.equal(stylin.getCss(), '.' + className + '{color:red}')
+  var className = stylin({
+    color: 'red',
+    '.foo': {
+      width: 'calc(100%)'
+    }
+  })
+  t.equal(stylin.getCss(), `.${className}{color:red !important}.${className} .foo{width:-webkit-calc(100%) !important;width:-moz-calc(100%) !important;width:calc(100%) !important}`)
   t.end()
 })
 
