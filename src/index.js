@@ -1,4 +1,6 @@
 var prefixAll = require('inline-style-prefix-all')
+var extend = require('xtend')
+var toArray = require('to-array')
 var freeStyle = require('./free-style')
 
 module.exports = css
@@ -10,22 +12,24 @@ css.getCss = getCss
 function css (style) {
   if (!style) throw new TypeError('css style object expected')
 
-  return freeStyle().registerStyle(prefix(style))
+  return freeStyle().registerStyle(prepare(toArray(arguments)))
 }
 
 function rule (key, style) {
   if (!style) throw new TypeError('css style object expected')
 
-  return freeStyle().registerRule(key, prefix(style))
+  return freeStyle().registerRule(key, prepare(toArray(arguments, 1)))
 }
 
 function keyframes (style) {
   if (!style) throw new TypeError('css style object expected')
 
-  return freeStyle().registerKeyframes(prefix(style))
+  return freeStyle().registerKeyframes(prepare(toArray(arguments)))
 }
 
-function prefix (style) {
+function prepare (styleArray) {
+  var style = extend.apply(null, styleArray)
+
   prefixAll(style)
   important(style)
 
@@ -36,7 +40,7 @@ function important (style) {
   for (var key in style) {
     if (style[key] instanceof Object) {
       style[key] = important(style[key])
-    } else if (String(style[key]).indexOf('!important') === -1) {
+    } else {
       style[key] += ' !important'
     }
   }
