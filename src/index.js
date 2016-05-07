@@ -12,7 +12,7 @@ css.getCss = getCss
 function css (style) {
   if (!style) throw new TypeError('css style object expected')
 
-  return freeStyle().registerStyle(prepare(toArray(arguments)))
+  return freeStyle().registerStyle(prepare(toArray(arguments), true))
 }
 
 function rule (key, style) {
@@ -27,26 +27,30 @@ function keyframes (style) {
   return freeStyle().registerKeyframes(prepare(toArray(arguments)))
 }
 
-function prepare (styleArray) {
+function getCss () {
+  return freeStyle().getStyles()
+}
+
+function prepare (styleArray, addImportant) {
   var style = extend.apply(null, styleArray)
 
   prefixAll(style)
-  important(style)
+
+  if (addImportant) {
+    important(style)
+  }
 
   return style
 }
 
 function important (style) {
-  for (var key in style) {
-    if (style[key] instanceof Object) {
+  Object.keys(style).forEach(function (key) {
+    if (typeof style[key] === 'object') {
       style[key] = important(style[key])
-    } else {
+    } else if (String(style[key]).indexOf('!important') === -1) {
       style[key] += ' !important'
     }
-  }
-  return style
-}
+  })
 
-function getCss () {
-  return freeStyle().getStyles()
+  return style
 }
