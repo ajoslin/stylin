@@ -28,22 +28,15 @@ function keyframes (style) {
 }
 
 function prepare (styleArray) {
-  var style = extend.apply(null, styleArray)
+  var style = styleArray.length > 1
+    ? extend.apply(null, styleArray)
+    : styleArray[0]
+
+  if (style.$__prepared) return style
 
   prefixAll(style)
-  important(style)
 
-  return style
-}
-
-function important (style) {
-  for (var key in style) {
-    if (style[key] instanceof Object) {
-      style[key] = important(style[key])
-    } else {
-      style[key] += ' !important'
-    }
-  }
+  style.$__prepared = true
   return style
 }
 
