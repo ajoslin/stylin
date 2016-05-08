@@ -8,7 +8,7 @@ test(function (t) {
       width: 'calc(100%)'
     }
   }, {color2: 'green'})
-  t.equal(stylin.getCss(), `.${className}{color:red !important;color2:green !important}.${className} .foo{width:-webkit-calc(100%) !important;width:-moz-calc(100%) !important;width:calc(100%) !important}`)
+  t.equal(stylin.getCss(), '.' + className + '{color:red !important;color2:green !important}.' + className + ' .foo{width:-webkit-calc(100%) !important;width:-moz-calc(100%) !important;width:calc(100%) !important}')
   t.end()
 })
 
