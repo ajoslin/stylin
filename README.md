@@ -4,7 +4,7 @@ Javascript to CSS: Convert a style object into css and insert it into the DOM at
 
 This library is a convenience wrapper around [free-style](https://github.com/blakeembrey/free-style) that provides auto-prefixing and an easier API.
 
-Total size is 6.33kB gzipped.
+Total size is less than 6KB gzipped.
 
 ```
 npm install --save stylin
