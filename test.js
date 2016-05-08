@@ -25,3 +25,8 @@ test('errors', function (t) {
 
   t.end()
 })
+
+test('constant: style id', function (t) {
+  t.equal(typeof stylin.STYLE_ID, 'string')
+  t.end()
+})

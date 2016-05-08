@@ -2,12 +2,14 @@ var prefixAll = require('inline-style-prefix-all')
 var extend = require('xtend')
 var toArray = require('to-array')
 var freeStyle = require('./free-style')
+var constants = require('./constants')
 
 module.exports = css
 
 css.rule = rule
 css.keyframes = keyframes
 css.getCss = getCss
+css.STYLE_ID = constants.STYLE_ID
 
 function css (style) {
   if (!style) throw new TypeError('css style object expected')
