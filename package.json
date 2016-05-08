@@ -25,6 +25,7 @@
     "free-style": "^1.1.0",
     "global": "^4.3.0",
     "inline-style-prefix-all": "~2.0.0",
+    "insert-styles": "ajoslin/insert-styles#universal",
     "once": "^1.3.3",
     "to-array": "^0.1.4",
     "xtend": "^4.0.1"

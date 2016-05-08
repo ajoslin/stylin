@@ -34,7 +34,7 @@ function getCss () {
 }
 
 function prepare (styleArray, addImportant) {
-  var style = extend.apply(null, styleArray)
+  var style = extend.apply(null, styleArray) || {}
 
   prefixAll(style)
 
@@ -46,8 +46,9 @@ function prepare (styleArray, addImportant) {
 }
 
 function important (style) {
+  if (!style) return
   Object.keys(style).forEach(function (key) {
-    if (typeof style[key] === 'object') {
+    if (style && typeof style[key] === 'object') {
       style[key] = important(style[key])
     } else if (String(style[key]).indexOf('!important') === -1) {
       style[key] += ' !important'
