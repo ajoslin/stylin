@@ -1,7 +1,7 @@
 var test = require('tape')
 var stylin = require('./')
 
-test(function (t) {
+test('stylin', function (t) {
   var className = stylin({
     color: 'red',
     '.foo': {
@@ -9,6 +9,12 @@ test(function (t) {
     }
   }, {color2: 'green'})
   t.equal(stylin.getCss(), '.' + className + '{color:red !important;color2:green !important}.' + className + ' .foo{width:-webkit-calc(100%) !important;width:-moz-calc(100%) !important;width:calc(100%) !important}')
+  t.end()
+})
+
+test('stylin.unimportant', function (t) {
+  var className = stylin({color: 'red'})
+  t.ok(stylin.getCss().indexOf('.' + className + '{color:red}').unimportant !== -1, 'unimportant style added')
   t.end()
 })
 

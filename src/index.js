@@ -6,6 +6,7 @@ var constants = require('./constants')
 
 module.exports = css
 
+css.unimportant = unimportant
 css.rule = rule
 css.keyframes = keyframes
 css.getCss = getCss
@@ -15,6 +16,12 @@ function css (style) {
   if (!style) throw new TypeError('css style object expected')
 
   return freeStyle().registerStyle(prepare(toArray(arguments), true))
+}
+
+function unimportant (style) {
+  if (!style) throw new TypeError('css style object expected')
+
+  return freeStyle().registerStyle(prepare(toArray(arguments), false))
 }
 
 function rule (key, style) {

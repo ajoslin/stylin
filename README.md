@@ -33,11 +33,19 @@ render('blue') // generates new stylesheet and className
 
 ### API
 
+All styles are set to `!important` by default, to avoid the pains of style-priority.
+
 #### `stylin(style) -> className`
 
 Returns a string className for the given style.
 
 Passes a prefixed style object to [FreeStyle#registerStyle](https://github.com/blakeembrey/free-style#styles).
+
+#### `stylin.unimporant(style)` -> className`
+
+Returns a string className for the given style. Same as the the main `stylin` method above, except does *not* mark the styles as `!important`.
+
+This is good to use with elements who will have styles added to them by third-party libraries.
 
 #### `stylin.rule(key, style) -> undefined`
 
