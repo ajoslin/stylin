@@ -1,6 +1,5 @@
 var prefixAll = require('inline-style-prefix-all')
 var extend = require('xtend')
-var toArray = require('to-array')
 var freeStyle = require('./free-style')
 var constants = require('./constants')
 
@@ -15,34 +14,43 @@ css.STYLE_ID = constants.STYLE_ID
 function css (style) {
   if (!style) throw new TypeError('css style object expected')
 
-  return freeStyle().registerStyle(prepare(toArray(arguments), true))
+  return freeStyle().registerStyle(prepareStyle(
+    extend.apply(null, arguments),
+    true
+  ))
 }
 
 function unimportant (style) {
   if (!style) throw new TypeError('css style object expected')
 
-  return freeStyle().registerStyle(prepare(toArray(arguments), false))
+  return freeStyle().registerStyle(prepareStyle(
+    extend.apply(null, arguments),
+    true
+  ))
 }
 
 function rule (key, style) {
   if (!style) throw new TypeError('css style object expected')
 
-  return freeStyle().registerRule(key, prepare(toArray(arguments, 1)))
+  return freeStyle().registerRule(prepareStyle(
+    extend.apply(null, Array.prototype.slice.call(arguments, 1)),
+    false
+  ))
 }
 
 function keyframes (style) {
   if (!style) throw new TypeError('css style object expected')
-
-  return freeStyle().registerKeyframes(prepare(toArray(arguments)))
+  return freeStyle().registerKeyframes(prepareStyle(
+    extend.apply(null, arguments),
+    false
+  ))
 }
 
 function getCss () {
   return freeStyle().getStyles()
 }
 
-function prepare (styleArray, addImportant) {
-  var style = extend.apply(null, styleArray) || {}
-
+function prepareStyle (style, addImportant) {
   prefixAll(style)
 
   if (addImportant) {
