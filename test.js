@@ -14,8 +14,9 @@ test('stylin', function (t) {
 })
 
 test('stylin.unimportant', function (t) {
-  var className = stylin({color: 'red'})
-  t.ok(stylin.getCss().indexOf('.' + className + '{color:red}').unimportant !== -1, 'unimportant style added')
+  var className = stylin.unimportant({color: 'red'})
+  t.ok(stylin.getCss().indexOf('.' + className + '{color:red}') !== -1, 'unimportant style added')
+  t.ok(stylin.getCss().indexOf('.' + className + '{color:red} !important') === -1, 'important style not added')
   t.end()
 })
 

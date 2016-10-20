@@ -25,7 +25,7 @@ function unimportant (style) {
 
   return freeStyle().registerStyle(prepareStyle(
     extend.apply(null, arguments),
-    true
+    false
   ))
 }
 
