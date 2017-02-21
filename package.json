@@ -19,7 +19,6 @@
   "author": "Andrew Joslin <andrewtjoslin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "proxyquire": "~1.7.10",
     "standard": "^6.0.8",
     "tape": "^4.5.1"
   },
