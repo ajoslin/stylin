@@ -3,6 +3,7 @@
   "version": "4.2.3",
   "description": "Javascript to CSS: A convenience wrapper around free-style",
   "repository": "ajoslin/stylin",
+  "main": "src/index.js",
   "files": [
     "index.js",
     "src"
@@ -25,7 +26,7 @@
   "dependencies": {
     "free-style": "~2.0.0",
     "global": "~4.3.0",
-    "inline-style-prefix-all": "~2.0.0",
+    "inline-style-prefixer": "^3.0.0",
     "insert-styles": "~1.2.1",
     "xtend": "~4.0.1"
   }

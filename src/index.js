@@ -1,5 +1,5 @@
-var prefixAll = require('inline-style-prefix-all')
-var extend = require('xtend')
+var prefixAll = require('inline-style-prefixer/static')
+var assign = require('xtend/mutable')
 var freeStyle = require('./free-style')
 var constants = require('./constants')
 
@@ -15,7 +15,7 @@ function css (style) {
   if (!style) throw new TypeError('stylin: css style object expected')
 
   return freeStyle().registerStyle(prepareStyle(
-    extend.apply(null, arguments),
+    assign.apply(null, arguments),
     true
   ))
 }
@@ -24,7 +24,7 @@ function unimportant (style) {
   if (!style) throw new TypeError('stylin.unimportant: css style object expected')
 
   return freeStyle().registerStyle(prepareStyle(
-    extend.apply(null, arguments),
+    assign.apply(null, arguments),
     false
   ))
 }
@@ -35,7 +35,7 @@ function rule (key, style) {
   return freeStyle().registerRule(
     key,
     prepareStyle(
-      extend.apply(null, Array.prototype.slice.call(arguments, 1)),
+      assign.apply(null, Array.prototype.slice.call(arguments, 1)),
       false
     )
   )
@@ -45,7 +45,7 @@ function keyframes (style) {
   if (!style) throw new TypeError('stylin.keyframes: css style object expected')
 
   return freeStyle().registerKeyframes(prepareStyle(
-    extend.apply(null, Array.prototype.slice.call(arguments)),
+    assign.apply(null, Array.prototype.slice.call(arguments)),
     false
   ))
 }

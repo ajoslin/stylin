@@ -5,11 +5,11 @@ test('stylin', function (t) {
   var className = stylin({
     color: 'red',
     '.foo': {
-      width: 'calc(100%)'
+      transition: 'color 1s'
     }
   }, {color2: 'green'})
 
-  t.equal(stylin.getCss(), `.${className}{color:red !important;color2:green !important}.${className} .foo{width:-webkit-calc(100%) !important;width:-moz-calc(100%) !important;width:calc(100%) !important}`)
+  t.equal(stylin.getCss(), `.${className}{color:red !important;color2:green !important}.${className} .foo{-moz-transition:color 1s !important;-webkit-transition:color 1s !important;transition:color 1s !important}`)
   t.end()
 })
 
