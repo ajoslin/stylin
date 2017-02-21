@@ -35,21 +35,21 @@ render('blue') // generates new stylesheet and className
 
 All styles are set to `!important` by default, to avoid the pains of style-priority.
 
-#### `stylin(style) -> className`
+#### `stylin(styles...) -> className`
 
-Returns a string className for the given style.
+Returns a string className for the given style objects extended together.
 
 Passes a prefixed style object to [FreeStyle#registerStyle](https://github.com/blakeembrey/free-style#styles).
 
-#### `stylin.unimporant(style)` -> className`
+#### `stylin.unimporant(styles...)` -> className`
 
-Returns a string className for the given style. Same as the the main `stylin` method above, except does *not* mark the styles as `!important`.
+Returns a string className for the given style objects extended together. Same as the the main `stylin` method above, except does *not* mark the styles as `!important`.
 
 This is good to use with elements who will have styles added to them by third-party libraries.
 
-#### `stylin.rule(key, style) -> undefined`
+#### `stylin.rule(key, styles...) -> undefined`
 
-Creates a global rule. Use it for font-faces and the like.
+Creates a global rule from the given styles extended together. Use it for font-faces and the like.
 
 Passes a prefixed rule object to [FreeStyle#registerRule](https://github.com/blakeembrey/free-style#rules).
 
@@ -63,9 +63,9 @@ css.rule('@font-face', {
 })
 ```
 
-#### `stylin.keyframes(style) -> animationName`
+#### `stylin.keyframes(styles...) -> animationName`
 
-Returns a string animationName for the given keyframe definition.
+Returns a string animationName for the given keyframe definitions extended together.
 
 Passes a prefixed keyframe object to [FreeStyle#registerKeyframes](https://github.com/blakeembrey/free-style#keyframes).
 
