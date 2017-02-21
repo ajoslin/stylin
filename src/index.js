@@ -12,7 +12,7 @@ css.getCss = getCss
 css.STYLE_ID = constants.STYLE_ID
 
 function css (style) {
-  if (!style) throw new TypeError('css style object expected')
+  if (!style) throw new TypeError('stylin: css style object expected')
 
   return freeStyle().registerStyle(prepareStyle(
     extend.apply(null, arguments),
@@ -21,7 +21,7 @@ function css (style) {
 }
 
 function unimportant (style) {
-  if (!style) throw new TypeError('css style object expected')
+  if (!style) throw new TypeError('stylin.unimportant: css style object expected')
 
   return freeStyle().registerStyle(prepareStyle(
     extend.apply(null, arguments),
@@ -30,18 +30,22 @@ function unimportant (style) {
 }
 
 function rule (key, style) {
-  if (!style) throw new TypeError('css style object expected')
+  if (!key || !style) throw new TypeError('stylin.rule: parameters (key, style) expected')
 
-  return freeStyle().registerRule(prepareStyle(
-    extend.apply(null, Array.prototype.slice.call(arguments, 1)),
-    false
-  ))
+  return freeStyle().registerRule(
+    key,
+    prepareStyle(
+      extend.apply(null, Array.prototype.slice.call(arguments, 1)),
+      false
+    )
+  )
 }
 
 function keyframes (style) {
-  if (!style) throw new TypeError('css style object expected')
+  if (!style) throw new TypeError('stylin.keyframes: css style object expected')
+
   return freeStyle().registerKeyframes(prepareStyle(
-    extend.apply(null, arguments),
+    extend.apply(null, Array.prototype.slice.call(arguments)),
     false
   ))
 }

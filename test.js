@@ -20,6 +20,23 @@ test('stylin.unimportant', function (t) {
   t.end()
 })
 
+test('stylin.rule', function (t) {
+  stylin.rule('@media print', {
+    backgroundColor: 'teal'
+  })
+  t.ok(stylin.getCss().indexOf('@media print{background-color:teal}') !== -1, 'media style added')
+  t.end()
+})
+
+test('stylin.keyframes', function (t) {
+  var className = stylin.keyframes({
+    from: {opacity: 0},
+    to: {opacity: 1}
+  })
+  t.ok(stylin.getCss().indexOf('@keyframes ' + className + '{from{opacity:0}to{opacity:1}') !== -1, 'keyframe style added')
+  t.end()
+})
+
 test('errors', function (t) {
   t.throws(function () {
     stylin.css()

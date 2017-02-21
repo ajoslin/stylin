@@ -31,8 +31,8 @@ function createStyleInstance () {
   function registerFn (methodName) {
     var method = Style[methodName]
 
-    return function register (rule) {
-      var result = method.call(Style, rule)
+    return function register () {
+      var result = method.apply(Style, arguments)
 
       if (Style.changeId !== changeId) {
         insertStyles(Style.getStyles(), {id: STYLE_ID})
