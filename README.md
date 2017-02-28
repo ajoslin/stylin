@@ -46,7 +46,7 @@ Returns a string className for the given style object. All style values will be 
 
 Passes a prefixed style object to [FreeStyle#registerStyle](https://github.com/blakeembrey/free-style#styles).
 
-#### `stylin.unimporant(style)` -> className`
+#### `stylin.unimportant(style)` -> className`
 
 Returns a string className for the given style object. This the same as the the main `stylin` method above, except it does *not* mark style values as `!important`.
 
