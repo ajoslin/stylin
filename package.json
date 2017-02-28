@@ -15,6 +15,7 @@
   "author": "Andrew Joslin <andrewtjoslin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "proxyquire": "^1.7.11",
     "standard": "^6.0.8",
     "tape": "^4.5.1"
   },
@@ -22,7 +23,6 @@
     "free-style": "~2.0.0",
     "global": "~4.3.0",
     "inline-style-prefixer": "^3.0.0",
-    "insert-styles": "~1.2.1",
-    "xtend": "~4.0.1"
+    "insert-styles": "~1.2.1"
   }
 }

@@ -1,45 +1,33 @@
 var FreeStyle = require('free-style')
 var insertStyles = require('insert-styles')
 
-var STYLE_ID = require('./constants').STYLE_ID
-
-var styleInstance = null
+var STYLE_ID = '__stylin__'
 var changeId = null
 
-// One global style instance
-module.exports = function getInstance () {
-  if (!styleInstance) {
-    styleInstance = createStyleInstance()
-  }
-  return styleInstance
+var freeStyle = module.exports = {
+  Style: FreeStyle.create(),
+  STYLE_ID: STYLE_ID,
+  getStyles: getStyles
+}
+freeStyle.registerStyle = createStyleFunction('registerStyle')
+freeStyle.registerRule = createStyleFunction('registerRule')
+freeStyle.registerKeyframes = createStyleFunction('registerKeyframes')
+
+function getStyles () {
+  return freeStyle.Style.getStyles()
 }
 
-function createStyleInstance () {
-  var Style = FreeStyle.create()
+function createStyleFunction (methodName) {
+  var method = freeStyle.Style[methodName]
 
-  return {
-    getStyles: getStyles,
-    registerStyle: registerFn('registerStyle'),
-    registerRule: registerFn('registerRule'),
-    registerKeyframes: registerFn('registerKeyframes')
-  }
+  return function register () {
+    var result = method.apply(freeStyle.Style, arguments)
 
-  function getStyles () {
-    return Style.getStyles()
-  }
-
-  function registerFn (methodName) {
-    var method = Style[methodName]
-
-    return function register () {
-      var result = method.apply(Style, arguments)
-
-      if (Style.changeId !== changeId) {
-        insertStyles(Style.getStyles(), {id: STYLE_ID})
-        changeId = Style.changeId
-      }
-
-      return result
+    if (freeStyle.Style.changeId !== changeId) {
+      insertStyles(freeStyle.Style.getStyles(), {id: STYLE_ID})
+      changeId = freeStyle.Style.changeId
     }
+
+    return result
   }
 }
