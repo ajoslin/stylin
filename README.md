@@ -40,23 +40,37 @@ stylin **will mutate passed in style objects** to add browser prefixes and `!imp
 - We only need to add prefixes and `!important` once per style object
 - We don't thrash the garbage collector with a deluge of new objects
 
-#### `stylin(style) -> className`
+### `stylin(style, [styleOptions]) -> className`
 
 Returns a string className for the given style object. All style values will be marked as `!important`. Use `stylin.unimportant` when this is not wanted.
 
-Passes a prefixed style object to [FreeStyle#registerStyle](https://github.com/blakeembrey/free-style#styles).
+##### style
 
-#### `stylin.unimportant(style)` -> className`
+*Type*: Object (*required*)
+
+An object of style key/value pairs, which will be prefixed and passed to [FreeStyle#registerStyle](https://github.com/blakeembrey/free-style#styles).
+
+##### styleOptions
+
+*Type*: Object
+
+###### styleOptions.styleId
+
+If passed in, use a FreeStyle instance and stylesheet matching `styleId` for these styles. By default, all styles are shared between one FreeStyle instance and `<style>` tag using `stylin.STYLE_ID`.
+
+### `stylin.unimportant(style, [styleOptions])` -> className`
 
 Returns a string className for the given style object. This the same as the the main `stylin` method above, except it does *not* mark style values as `!important`.
 
 This is good to use with elements who will have styles added to them by third-party libraries, so as not to override those styles.
 
-#### `stylin.rule(key, style) -> undefined`
+### `stylin.rule(key, style, [styleOptions]) -> undefined`
 
 Creates a global rule from the given styles extended together. Use it for font-faces and other global rules.
 
 Passes a prefixed rule object to [FreeStyle#registerRule](https://github.com/blakeembrey/free-style#rules).
+
+See `stylin()` method above for documentation of `styleOptions`.
 
 Example:
 
@@ -68,11 +82,13 @@ css.rule('@font-face', {
 })
 ```
 
-#### `stylin.keyframes(style) -> animationName`
+#### `stylin.keyframes(style, [styleOptions]) -> animationName`
 
 Returns a string animationName for the given keyframe definition.
 
 Passes a prefixed keyframe object to [FreeStyle#registerKeyframes](https://github.com/blakeembrey/free-style#keyframes).
+
+See `stylin()` method above for documentation of `styleOptions`.
 
 Example:
 
@@ -84,13 +100,15 @@ var animationName = css.keyframes({
 })
 ```
 
-#### `stylin.getCss() -> cssString`
+#### `stylin.getCss([styleId]) -> cssString`
+
+`styleId` defaults to `stylin.STYLE_ID`.
 
 Returns a string of all styles generated. Intended for use in server-side rendering.
 
 #### `stylin.STYLE_ID`
 
-This is the string ID of the `<style>` element that styles will be placed into.
+This is the string ID of the `<style>` element that styles will be placed into by default.
 
 For server side rendering, send the following to the client, and the client will find the existing styles in the style tag and merge them:
 

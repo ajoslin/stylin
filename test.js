@@ -1,16 +1,14 @@
 var test = require('tape')
 var stylin = require('./')
-var freeStyle = require('./src/free-style')
-var FreeStyle = require('free-style')
 
 test('stylin', function (t) {
-  freeStyle.Style = FreeStyle.create()
   var className = stylin({
     color: 'green',
     '.foo': {
       transition: 'color 1s'
     }
   })
+
   t.equal(stylin.getCss(), `.${className}{color:green !important}.${className} .foo{-moz-transition:color 1s !important;-webkit-transition:color 1s !important;transition:color 1s !important}`)
 
   var className2 = stylin({
@@ -21,28 +19,33 @@ test('stylin', function (t) {
 })
 
 test('stylin.unimportant', function (t) {
-  freeStyle.Style = FreeStyle.create()
-  var className = stylin.unimportant({color: 'red'})
-  t.equal(stylin.getCss(), `.${className}{color:red}`)
+  var className = stylin.unimportant(
+    {color: 'red'},
+    {styleId: 'test-unimportant'}
+  )
+  t.equal(stylin.getCss('test-unimportant'), `.${className}{color:red}`)
   t.end()
 })
 
 test('stylin.rule', function (t) {
-  freeStyle.Style = FreeStyle.create()
-  stylin.rule('@media print', {
-    backgroundColor: 'teal'
-  })
-  t.ok(stylin.getCss(), '@media print{background-color:teal}')
+  stylin.rule(
+    '@media print',
+    {backgroundColor: 'teal'},
+    {styleId: 'test-rule'}
+  )
+  t.ok(stylin.getCss('test-rule'), '@media print{background-color:teal}')
   t.end()
 })
 
 test('stylin.keyframes', function (t) {
-  freeStyle.Style = FreeStyle.create()
-  var className = stylin.keyframes({
-    from: {opacity: 0},
-    to: {opacity: 1}
-  })
-  t.equal(stylin.getCss(), `@keyframes ${className}{from{opacity:0}to{opacity:1}}`)
+  var className = stylin.keyframes(
+    {
+      from: {opacity: 0},
+      to: {opacity: 1}
+    },
+    {styleId: 'test-keyframes'}
+  )
+  t.equal(stylin.getCss('test-keyframes'), `@keyframes ${className}{from{opacity:0}to{opacity:1}}`)
   t.end()
 })
 

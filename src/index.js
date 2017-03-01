@@ -6,33 +6,33 @@ var hasOwnProperty = Object.prototype.hasOwnProperty
 module.exports = exports.default = css
 
 css.unimportant = unimportant
-css.rule = rule
 css.keyframes = keyframes
+css.rule = rule
 css.getCss = freeStyle.getStyles
 css.STYLE_ID = freeStyle.STYLE_ID
 
-function css (style) {
+function css (style, opts) {
   if (!style) throw new TypeError('stylin: css style object expected')
 
-  return freeStyle.registerStyle(prepareStyle(true, style))
+  return freeStyle.registerStyle(prepareStyle(true, style), opts)
 }
 
-function unimportant (style) {
+function unimportant (style, opts) {
   if (!style) throw new TypeError('stylin.unimportant: css style object expected')
 
-  return freeStyle.registerStyle(prepareStyle(false, style))
+  return freeStyle.registerStyle(prepareStyle(false, style), opts)
 }
 
-function rule (key, style) {
-  if (!key || !style) throw new TypeError('stylin.rule: parameters (key, style) expected')
-
-  return freeStyle.registerRule(key, prepareStyle(false, style))
-}
-
-function keyframes (style) {
+function keyframes (style, opts) {
   if (!style) throw new TypeError('stylin.keyframes: css style object expected')
 
-  return freeStyle.registerKeyframes(prepareStyle(false, style))
+  return freeStyle.registerKeyframes(prepareStyle(false, style), opts)
+}
+
+function rule (key, style, opts) {
+  if (!key || !style) throw new TypeError('stylin.rule: parameters (key, style) expected')
+
+  return freeStyle.registerRule(key, prepareStyle(false, style), opts)
 }
 
 function prepareStyle (addImportant, styles) {
