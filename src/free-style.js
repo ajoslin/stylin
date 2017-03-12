@@ -7,6 +7,7 @@ var DEFAULT_STYLE_ID = '__stylin__'
 module.exports = {
   STYLE_ID: DEFAULT_STYLE_ID,
   getStyles: getStyles,
+  reset: reset,
   registerStyle: createStyleFunction('registerStyle', 1),
   registerKeyframes: createStyleFunction('registerKeyframes', 1),
   registerRule: createStyleFunction('registerRule', 2)
@@ -15,6 +16,10 @@ module.exports = {
 function getStyles (styleId) {
   var byId = styleInstancesById[styleId || DEFAULT_STYLE_ID]
   return byId && byId.Style ? byId.Style.getStyles() : ''
+}
+
+function reset () {
+  styleInstancesById = {}
 }
 
 function createStyleFunction (methodName, arity) {

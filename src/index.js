@@ -10,6 +10,7 @@ css.keyframes = keyframes
 css.rule = rule
 css.getCss = freeStyle.getStyles
 css.STYLE_ID = freeStyle.STYLE_ID
+css.reset = freeStyle.reset
 
 function css (style, opts) {
   if (!style) throw new TypeError('stylin: css style object expected')

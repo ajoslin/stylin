@@ -106,6 +106,10 @@ var animationName = css.keyframes({
 
 Returns a string of all styles generated. Intended for use in server-side rendering.
 
+#### `stylin.reset()`
+
+Removes all saved styles. Good for "clearing" styles before each server-side render.
+
 #### `stylin.STYLE_ID`
 
 This is the string ID of the `<style>` element that styles will be placed into by default.

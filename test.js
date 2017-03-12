@@ -18,6 +18,13 @@ test('stylin', function (t) {
   t.end()
 })
 
+test('stylin.reset()', function (t) {
+  t.ok(stylin.getCss())
+  stylin.reset()
+  t.notOk(stylin.getCss())
+  t.end()
+})
+
 test('stylin.unimportant', function (t) {
   var className = stylin.unimportant(
     {color: 'red'},
