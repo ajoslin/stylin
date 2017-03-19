@@ -1,10 +1,12 @@
 var FreeStyle = require('free-style')
 var insertStyles = require('insert-styles')
+var window = require('global/window')
 
 var styleInstancesById = {}
 var DEFAULT_STYLE_ID = '__stylin__'
 
-module.exports = {
+// Support multiple instances of the module in the same document.
+module.exports = window.__stylin_data__ = window.__stylin_data__ || {
   STYLE_ID: DEFAULT_STYLE_ID,
   getStyles: getStyles,
   reset: reset,
