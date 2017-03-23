@@ -40,7 +40,7 @@ function createStyleFunction (methodName, arity) {
     var result = Style[methodName].apply(Style, args)
     if (Style.changeId !== changeId) {
       insertStyles(Style.getStyles(), {id: styleId})
-      changeId = Style.changeId
+      byId.changeId = Style.changeId
     }
 
     return result
